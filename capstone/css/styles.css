@@ -1,0 +1,223 @@
+body{
+  width: auto;
+  background-color: #0290BF;
+  font-family: 'Lato';
+  color: white;
+  overflow: auto;
+  display: block;
+  padding-bottom: 55px;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+
+p.float-nav{
+  display: inline;
+  padding-right: .25em;
+}
+
+.nav-link{
+  color: white;
+  display: inline;
+  font-size: 28px;
+  text-align: center;
+  padding-left: .25em;
+  padding-right: .25em;
+  line-height: 57px;
+}
+
+.main-content-title{
+  text-align: center;
+  padding-top: 0px;
+}
+
+.form-text{
+  display: inline-block;
+  position: relative;
+}
+
+.form-input-text{
+  height: 53px;
+  font-size: 24px;
+  color: white;
+  border-radius: 0px;
+  border: 5px solid white;
+  background-color: #0290BF;
+  margin-top: 1em;
+}
+
+.text-input-medium{
+  width: 263px;
+}
+
+.text-input-large{
+  width: 650px;
+}
+
+.right{
+  float: right;
+}
+
+.break-div{
+  display: inline-block;
+  background: white;
+  height: 5px;
+  width: 100%;
+}
+
+.file{
+  width: 97%;
+}
+
+#wrapper{
+  width: 660px;
+  height: 100%;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#floating-nav{
+  width: auto;
+  height: auto;
+  text-align: right;
+  background-color: #0290BF;
+}
+
+#masthead{
+  height: 165px;
+  background-color: #0290BF;
+  text-align: right;
+}
+
+#mast-logo{
+  height: inherit;
+  display: inline;
+  float: left;
+  fill: #FFFFFF;
+}
+
+#mast-p{
+  display: inline;
+  font-size: 64px;
+  line-height: 165px;
+}
+
+#navbar{
+  height: 57px;
+  background-color: #0290BF;
+  text-align: center;
+}
+
+#main-content{
+  height: auto;
+  width: auto;
+  background: #0290BF;
+  position: relative;
+}
+
+#create-acct-form-title{
+
+}
+
+#sign-in-form-title{
+  font-size: 68px;
+}
+
+#footer{
+  background-color: #0290BF;
+  bottom: 0px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  align-content: center;
+  width: 75%;
+  height: 45px;
+  left: 50%;
+  margin-left: -37.5%;
+}
+
+#right-main{
+   position: absolute;
+   display:inline-block;
+   width: auto;
+   height: auto;
+   margin-left: 1em;
+}
+
+#left-main{
+   position: relative;
+   display: inline-block;
+   width: auto;
+   height: 232px;
+}
+
+#profilePicInput{
+  cursor: pointer;
+}
+
+#browse{
+  display: inline-block;
+}
+
+/*
+  my-acct page related styles
+*/
+
+#my-acct-billing-table{
+  width: auto;
+  height: auto;
+  font-size: 26px;
+}
+
+#my-acct-information-table{
+  width: 100%;
+  height: auto;
+  font-size: 26px;
+
+}
+
+p.information-p{
+  margin-top: .25em;
+  margin-bottom: .25em;
+}
+
+p.billing-table{
+  margin-top: .25em;
+  margin-bottom: .25em;
+}
+
+h1.my-acct{
+  color: #C3ECFA;
+}
+
+td.left-col{
+  width: 90%;
+}
+
+td.right-col{
+  width: 20%;
+}
+
+td.information{
+  width: 35px;
+  height: auto;
+}
+
+
+h1.my-acct-billing-links, h1.my-acct-change-pass{
+  font-size: 24px;
+  text-align: right;
+}
+
+img.edit-icon{
+  width: 35px;
+}
