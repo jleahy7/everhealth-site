@@ -13,7 +13,7 @@ class Template{
 
 
   public $header, $mast, $footer, $floatingNav, $navBar, $mainContent;
-  private $db, $page, $cookie, $request_method, $info;
+  private $db, $page, $cookie, $request_method, $info, $inf;
 
   function __construct($__page){
 
@@ -21,13 +21,11 @@ class Template{
     $this->init_db();
     $this->page = $__page;
     $this->info = new Info();
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $request_method = 'POST';
       if($this->handle_POST() == true){
         //set cookie
-        $this->info->set_cookie_name('account_username');
-        $this->info->set_cookie_value($_POST['username']);
+        setcookie('account_username', $_POST['username'], time() + 63072000);
         header('Location: my-acct.php');
       } else {
         //redirect to login with error message
@@ -35,17 +33,23 @@ class Template{
       }
     } else {
 
+      if(isset($_COOKIE['account_username'])){
+        //grab whatever info we will need on the page
+        $this->info->set_cookie_name("account_username");
+        $this->info->set_cookie_value($_COOKIE['account_username']);
+        $inf = $this->info->grab_info_from_db();
+      }
 
-      $header = new Header($this->page);
+      $header = new Header($this->page, $inf);
       // echo the wrapper
       echo "<body>";
       echo "<div id='wrapper'>";
-      $floatingNav = new FloatingNav($this->page);
-      $mast = new Masthead($this->page);
-      $navBar = new NavBar($this->page);
-      $mainContent = new MainContent($this->page);
+      $floatingNav = new FloatingNav($this->page, $inf);
+      $mast = new Masthead($this->page, $inf);
+      $navBar = new NavBar($this->page, $inf);
+      $mainContent = new MainContent($this->page, $inf);
       echo "</div>";
-      $footer = new Footer($this->page);
+      $footer = new Footer($this->page, $inf);
     }
   }
 

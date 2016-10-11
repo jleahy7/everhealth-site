@@ -1,10 +1,13 @@
 <?php
 class MainContent{
 
-  public $page;
+  public $page, $info;
 
-  public function __construct($_page){
+  public function __construct($_page, $_info){
     $this->page = $_page;
+    $this->info = $_info;
+
+    echo "info var_dump: " . var_dump($this->info);
 
     echo "<div id='main-content'>";
 
@@ -98,15 +101,15 @@ class MainContent{
     echo "<div id='right-main'>";
     echo "<table id='my-acct-information-table'>";
     echo "<tr>";
-    echo "<td class='left-col'><p id='fullName-field' class='information-p'>John Doe</p></td>";
+    echo "<td class='left-col'><p id='fullName-field' class='information-p'>" . $this->info['first_name'] . " " .$this->info['last_name'] . "</p></td>";
     echo "<td class='right-col information'><a href='update-profile.php'><img class='edit-icon' src='assets/edit-white.svg'></a></td>";
     echo "</tr>";
     echo "<tr>";
-    echo "<td  class='left-col'><p id='email-field' class='information-p'>johndoe@gmail.com</p></td>";
+    echo "<td  class='left-col'><p id='email-field' class='information-p'>" . $this->info['email'] . "</p></td>";
     echo "<td class='right-col information'><a href='update-profile.php'><img class='edit-icon' src='assets/edit-white.svg'></a></td>";
     echo "</tr>";
     echo "<tr>";
-    echo "<td class='left-col'><p id='phone-field' class='information-p'>(614)123-2342)</p></td>";
+    echo "<td class='left-col'><p id='phone-field' class='information-p'>" . $this->info['phone'] . "</p></td>";
     echo "<td class='right-col information'><a href='update-profile.php'><img class='edit-icon' src='assets/edit-white.svg'></a></td>";
     echo "</tr>";
     echo "</table>";
