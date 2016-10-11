@@ -37,19 +37,23 @@ class MainContent{
     echo "<input class='form-input-text text-input-medium right' type='text' id='lastName' name='lastName' value=' Last Name'>";
     echo "<input class='form-input-text text-input-large' type='text' id='phone' name='phone' value=' Phone'>";
     echo "<input class='form-input-text text-input-large' type='text' id='email' name='email' value=' Email'>";
-    echo "<input class='form-input-text text-input-large' type='text' id='password' name='password' value=' Password'>";
-    echo "<input class='form-input-text text-input-large' type='text' id='verifyPassword' name='verifyPassword' value=' Verify Password'>";
+    echo "<input class='form-input-text text-input-large' type='password' id='password' name='password' value=' Password'>";
+    echo "<input class='form-input-text text-input-large' type='password' id='verifyPassword' name='verifyPassword' value=' Verify Password'>";
     echo "<input class='form-input-text text-input-medium left' type='submit' name='submit' value=' Submit'>";
     echo "<input class='form-input-text text-input-medium right' type='submit' name='cancel' value=' Cancel'>";
     echo "</form>";
   }
 
   function signIn(){
+
     echo "<div id='main-content-br' class='break-div'></div>";
     echo "<h1 id='sign-in-form-title' class='main-content-title'>Member Sign In</h1>";
-    echo "<form id='create-acct-form'>";
+    if(isset($_GET['failed-login']) && $_GET['failed-login']){
+      echo "<p id='signin-error-p'><srtong>Error: Username or password is incorrect.</strong></p>";
+    }
+    echo "<form id='create-acct-form' method='post'>";
     echo "<input class='form-input-text text-input-large' type='text' name='username' value=' Username'>";
-    echo "<input class='form-input-text text-input-large' type='text' name='password' value=' Password'>";
+    echo "<input class='form-input-text text-input-large' type='password' name='password' value=' Password'>";
     echo "<input class='form-input-text text-input-medium left' type='submit' name='submit' value=' Submit'>";
     echo "<input class='form-input-text text-input-medium right' type='submit' name='cancel' value=' Cancel'>";
     echo "</form>";
@@ -61,8 +65,8 @@ class MainContent{
     echo "<h1 id='sign-in-form-title' class='main-content-title'>Change Password</h1>";
     echo "<form id='create-acct-form'>";
     echo "<input class='form-input-text text-input-large' type='text' name='currentPassword' value=' Current Password'>";
-    echo "<input class='form-input-text text-input-large' type='text' name='newPassword' value=' New Password'>";
-    echo "<input class='form-input-text text-input-large' type='text' name='verifyPassword' value=' Verify Password'>";
+    echo "<input class='form-input-text text-input-large' type='password' name='newPassword' value=' New Password'>";
+    echo "<input class='form-input-text text-input-large' type='password' name='verifyPassword' value=' Verify Password'>";
     echo "<input class='form-input-text text-input-medium left' type='submit' name='submit' value=' Submit'>";
     echo "<input class='form-input-text text-input-medium right' type='submit' name='cancel' value=' Cancel'>";
     echo "</form>";

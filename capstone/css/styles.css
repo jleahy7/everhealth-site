@@ -169,6 +169,15 @@ p.float-nav{
 }
 
 /*
+  sign-in page related styles
+*/
+
+#signin-error-p{
+  text-align: center;
+  color: #FFC1BE;
+}
+
+/*
   my-acct page related styles
 */
 
