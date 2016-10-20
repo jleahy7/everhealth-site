@@ -37,26 +37,12 @@ class MainContent{
   }
 
   function createAcct(){
-    // echo "<div id='main-content-br' class='break-div'></div>";
-    // echo "<h1 id='create-acct-form-title' class='main-content-title'>Create an account</h1>";
-    // echo "<form id='create-acct-form'>";
-    // echo "<input class='form-input-text text-input-medium left' type='text' id='firstName' name='firstName' value=' First Name'>";
-    // echo "<input class='form-input-text text-input-medium right' type='text' id='lastName' name='lastName' value=' Last Name'>";
-    // echo "<input class='form-input-text text-input-large' type='text' id='username' name='username' value=' Username'>";
-    // echo "<input class='form-input-text text-input-large' type='text' id='phone' name='phone' value=' Phone'>";
-    // echo "<input class='form-input-text text-input-large' type='text' id='email' name='email' value=' Email'>";
-    // echo "<input class='form-input-text text-input-large' type='text' id='password' name='password' value=' Password'>";
-    // echo "<input class='form-input-text text-input-large' type='text' id='verifyPassword' name='verifyPassword' value=' Verify Password'>";
-    // echo "<input class='form-input-text text-input-medium left' type='submit' name='submit' value=' Submit'>";
-    // echo "<input class='form-input-text text-input-medium right' type='submit' name='cancel' value=' Cancel'>";
-    // echo "</form>";
-
     echo "<div id='main-content-br' class='break-div'></div>";
     echo "<h1 id='create-acct-form-title' class='main-content-title'>Create an account</h1>";
     if(isset($_GET['defaultsUsed']) && $_GET['defaultsUsed']){
       echo "<p id='signin-error-p'><srtong>Error: Cannot use the default 'Username'.</strong></p>";
     } else if(isset($_GET['passwordLengthError']) && $_GET['passwordLengthError']){
-echo "<p id='signin-error-p'><srtong>Error: Passwords must be at least 6 characters.  <br>Passwords must also contain only letters and numbers.</strong></p>";
+      echo "<p id='signin-error-p'><srtong>Error: Passwords must be at least 6 characters.  <br>Passwords must also contain only letters and numbers.</strong></p>";
     }else if(isset($_GET['passwordMistMatch']) && $_GET['passwordMistMatch']){
       echo "<p id='signin-error-p'><srtong>Error: Passwords did not match.</strong></p>";
     } else if(isset($_GET['usernameTaken']) && $_GET['usernameTaken']){
@@ -176,7 +162,10 @@ echo "<p id='signin-error-p'><srtong>Error: Passwords must be at least 6 charact
   function changePass(){
     echo "<div id='main-content-br' class='break-div'></div>";
     echo "<h1 id='sign-in-form-title' class='main-content-title'>Change Password</h1>";
-    echo "<form id='create-acct-form'>";
+    if(isset($_GET['passwordLengthError']) && $_GET['passwordLengthError']){
+      echo "<p id='signin-error-p'><srtong>Error: Passwords must be at least 6 characters.  <br>Passwords must also contain only letters and numbers.</strong></p>";
+    }
+    echo "<form id='create-acct-form' method='POST'>";
     echo "<input class='form-input-text text-input-large' type='text' name='currentPassword' value=' Current Password'>";
     echo "<input class='form-input-text text-input-large' type='password' name='newPassword' value=' New Password'>";
     echo "<input class='form-input-text text-input-large' type='password' name='verifyPassword' value=' Verify Password'>";

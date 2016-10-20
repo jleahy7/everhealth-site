@@ -33,36 +33,41 @@ class Info{
   }
 
   public function grab_info_from_db(){
-    $db = MysqliDb::getInstance();
-    $db->where('account_username', $this->cookie_value);
-    $results = $db->get('customer')[0];
+    try{
+      $db = MysqliDb::getInstance();
+      $db->where('account_username', $this->cookie_value);
+      $results = $db->get('customer')[0];
 
-    $inf['first_name'] = $results['first_name'];
-    $inf['last_name'] = $results['last_name'];
-    $inf['email'] = $results['email'];
-    $inf['phone'] = $results['phone'];
-    $inf['location_ID'] = $results['location_ID'];
-    $inf['membership_ID'] = $results['membership_ID'];
+      $inf['first_name'] = $results['first_name'];
+      $inf['last_name'] = $results['last_name'];
+      $inf['email'] = $results['email'];
+      $inf['phone'] = $results['phone'];
+      $inf['location_ID'] = $results['location_ID'];
+      $inf['membership_ID'] = $results['membership_ID'];
 
-    $db->where('membership_ID', $inf['membership_ID']);
-    $results = $db->get('membership')[0];
+      $db->where('membership_ID', $inf['membership_ID']);
+      $results = $db->get('membership')[0];
 
-    $inf['payment_ID'] = $results['payment_ID'];
-    $inf['plan'] = $results['plan'];
+      $inf['payment_ID'] = $results['payment_ID'];
+      $inf['plan'] = $results['plan'];
 
-    $db->where('payment_ID', $inf['payment_ID']);
-    $results = $db->get('payment')[0];
+      $db->where('payment_ID', $inf['payment_ID']);
+      $results = $db->get('payment')[0];
 
-    $inf['payment_type'] = $results['payment_type'];
-    $inf['card_number'] = $results['card_number'];
+      $inf['payment_type'] = $results['payment_type'];
+      $inf['card_number'] = $results['card_number'];
 
-    $db->where('location_ID', $inf['location_ID']);
-    $results = $db->get('location')[0];
+      $db->where('location_ID', $inf['location_ID']);
+      $results = $db->get('location')[0];
 
-    $inf['city'] = $results['city'];
-    $inf['state'] = $results['state'];
+      $inf['city'] = $results['city'];
+      $inf['state'] = $results['state'];
 
-    // echo 'results : ' . var_dump($results);
+      // echo 'results : ' . var_dump($results);
+    } catch (Exception $e){
+      echo "There was an exception in the INFO class in the grab_info_from_db method.  Error was : " . $e;
+    }
+
     return $inf;
   }
 

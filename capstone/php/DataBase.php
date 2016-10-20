@@ -5,7 +5,7 @@ class DataBase{
     private $db;
 
     public function __construct(){
-      $this->db = new MysqliDb ('54.175.138.79', 'jimmy-2', 'cscccapstone', 'everhealth');
+      $this->db = new MysqliDb ('54.197.200.133', 'jake', 'cscccapstone', 'everhealth');
     }
 
     public function grab_db() {
@@ -58,9 +58,46 @@ class DataBase{
     }
 
     public static function add_payment_info($info){
-      echo var_dump($info);
+      // echo var_dump($info);
       $db = MysqliDb::getInstance();
       return $db->insert('payment', $info);
+    }
+
+    public static function add_membership($paymentID){
+      $info = Array(
+        "payment_ID" => $paymentID,
+        "plan" => "bronze",
+        "rate" => 10
+      );
+      $db = MysqliDb::getInstance();
+      $results = $db->insert('membership', $info);
+      return $results;
+    }
+
+    public static function tie_membership_to_customer($account_username, $membershipID){
+      $db = MysqliDb::getInstance();
+      $db->where('account_username', $account_username);
+      $results = $db->get('customer');
+      if(isset($results[0])){
+        echo 'tie method results : ' . var_dump($results);
+        $updateInfo = Array('membership_ID' => $membershipID);
+        $db->where('account_username', $account_username);
+        $db->update('customer', $updateInfo, 1);
+      }
+      return $results;
+    }
+
+    public static function change_acct_pass($username, $newPassword){
+      $db = MysqliDb::getInstance();
+      $db->where('account_username', $username);
+      $results = $db->get('accounts');
+      if(isset($results[0])){
+        echo 'tie method results : ' . var_dump($results);
+        $updateInfo = Array('account_password' => $newPassword);
+        $db->where('account_username', $username);
+        $results = $db->update('accounts', $updateInfo, 1);
+      }
+      return $results;
     }
 }
 

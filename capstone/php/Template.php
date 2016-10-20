@@ -19,7 +19,7 @@ class Template{
 
     require_once "vendor/autoload.php";
 
-    error_reporting(0);
+    // error_reporting(0);
 
     $this->init_db();
     $this->page = $__page;
@@ -29,6 +29,7 @@ class Template{
       $this->info->set_cookie_name("account_username");
       $this->info->set_cookie_value($_COOKIE['account_username']);
       $inf = $this->info->grab_info_from_db();
+      // echo 'got the info : ' . var_dump($inf);
     } else {
       $inf = 'nothing';
     }
@@ -186,8 +187,19 @@ class Template{
         "cvv" => $cvv,
         "card_holder" => $cardHolder
       );
-      if($this->db::add_payment_info($info)){
-        header('Location: my-acct.php');
+      // add the payment information
+      $addPaymentResult = $this->db::add_payment_info($info);
+      if($addPaymentResult){
+        // add a membership row
+        $results = $this->db::add_membership($addPaymentResult);
+        if($results){
+          //here results represents if the membership was added successfully and the membership_ID
+          //associate membership ID with the customer table
+          $results = $this->db::tie_membership_to_customer($_COOKIE['account_username'], $results);
+          echo 'tie results were : ' . var_dump($results);
+          header('Location: my-acct.php');
+        }
+
       }
     }
   }
@@ -216,7 +228,33 @@ class Template{
   }
 
   function changePass_POST(){
-
+    $username = null; $password = null; $newPass = null; $verifyNewPass = null;
+    if(isset($_COOKIE['account_username'])){
+      $username = $_COOKIE['account_username'];
+    }
+    if(isset($_POST['currentPassword'])){
+      $password = $_POST['currentPassword'];
+    }
+    if(isset($_POST['newPassword'])){
+      $newPass = $_POST['newPassword'];
+    }
+    if(isset($_POST['verifyPassword'])){
+      $verifyNewPass = $_POST['verifyPassword'];
+    }
+    if(is_null($username) || is_null($password) || is_null($newPass) || is_null($verifyNewPass)){
+      echo "Please check your log in credintials";
+    } else if(!Info::validate_password($newPass)){
+      header('Location: change-pass.php?passwordLengthError=true');
+    } else {
+      if(DataBase::change_acct_pass($username, $newPass)){
+        //set cookie
+        setcookie('account_username', $_POST['username'], time() + 63072000);
+        header('Location: my-acct.php');
+      } else {
+        //redirect back to sign in with error message
+        header('Location: change-pass.php?errorOccurred=true');
+      }
+    }
   }
 
   function changeProfilePic_POST(){
