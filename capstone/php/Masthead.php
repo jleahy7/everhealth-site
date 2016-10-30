@@ -1,12 +1,12 @@
 <?php
 class Masthead
 {
-	private $page;
+	private $page, $_info;
 
-	function __construct($__page){
+	function __construct($_page, $_info){
 
-		$this->page = $__page;
-		
+		$this->page = $_page;
+		$this->info = $_info;
 		echo "<div id='masthead'>";
 		echo "<img id='mast-logo' src=assets/weightlifting.svg>";
 		echo "<p id='mast-p'>Ever Health</p>";

@@ -65,6 +65,11 @@ p.float-nav{
   float: right;
 }
 
+.center{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .break-div{
   display: inline-block;
   background: white;
@@ -79,7 +84,7 @@ p.float-nav{
 #wrapper{
   width: 660px;
   height: 100%;
-  background-color: white;
+  /*background-color: red;*/
   margin-left: auto;
   margin-right: auto;
 }
@@ -169,6 +174,21 @@ p.float-nav{
 }
 
 /*
+  sign-in page related styles
+*/
+
+#signin-error-p{
+  text-align: center;
+  color: #FFC1BE;
+}
+
+a.forgot{
+  text-align: right;
+  float: right;
+  display: block;
+}
+
+/*
   my-acct page related styles
 */
 
@@ -179,10 +199,57 @@ p.float-nav{
 }
 
 #my-acct-information-table{
-  width: 100%;
+  width: 273px;
   height: auto;
   font-size: 26px;
 
+}
+
+/*
+  create-acct-step2
+*/
+
+.large-wide{
+  width: 100%;
+  height: 65px;
+  display: block;
+  font-size: 24px;
+  color: white;
+  border-radius: 0px;
+  border: 5px solid white;
+  background-color: #0290BF;
+  margin-top: 1em;
+}
+
+#location-select{
+  display: block;
+  margin-top: 10px
+}
+
+/*
+  create-acct-step3
+*/
+
+#expire-month{
+  width: 66%;
+  display: inline;
+}
+
+#expire-year{
+  display: inline;
+  float: right;
+  width: 33%;
+}
+
+.credit-info{
+  height: 65px;
+  display: block;
+  font-size: 24px;
+  color: white;
+  border-radius: 0px;
+  border: 5px solid white;
+  background-color: #0290BF;
+  margin-top: 1em;
 }
 
 p.information-p{
@@ -220,4 +287,65 @@ h1.my-acct-billing-links, h1.my-acct-change-pass{
 
 img.edit-icon{
   width: 35px;
+}
+
+
+/*
+
+  change-plan page related styles here
+
+*/
+
+div.change-plan{
+  display: block;
+  padding: .5em;
+  margin-bottom: 1.5em;
+  border: 8px solid #0290BF;
+  width: 100%;
+  height: auto;
+}
+
+div.selected-plan{
+  border: 8px solid #00C973;
+}
+
+div#gold{
+
+}
+
+div#silver{
+
+}
+
+div#bronze{
+
+}
+
+img.plan-medal{
+
+}
+
+p.plan-title{
+  font-size: 38px;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+table.change-plan-table{
+  width: 100%;
+  height: 100%;
+  font-size: 26px;
+}
+
+td.change-plan-table{
+  padding-top: .25em;
+  padding-bottom: .25em;
+
+}
+
+a#cancel-memberhip-link{
+  padding-top: 1em;
+  padding-bottom: 1em;
+  text-align: right;
+  float: right;
 }

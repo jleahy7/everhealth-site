@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+    <meta name="author" content="James Leahy">
+    <meta name="description" content="sample page for Ever Health">
+    <meta name="keywords" content="Ever Health, create account">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/styles.css"?>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+    <script src='js/main.js'></script>
+  </head>
+  <body>
+    <div id='wrapper'>
+      <div id='floating-nav'>
+        <a href='create-acct.html'><p class='float-nav' id='create-acct-float'>Create Account</p></a>
+        <a href='sign-in.html'><p class='float-nav' id='signin-float'>Sign In</p></a>
+      </div>
+      <div id='masthead'>
+        <img id='mast-logo' src=assets/weightlifting.svg>
+        <p id='mast-p'>Ever Health</p>
+      </div>
+      <div id='navbar'>
+        <a href='#'><p class='nav-link'>Home</p></a>
+        <a href='#'><p class='nav-link'>Locations</p></a>
+        <a href='#'><p class='nav-link'>Memberships</p></a>
+        <a href='#'><p class='nav-link'>About Us</p></a>
+      </div>
+      <div id='main-content'>
+        <div id='main-content-br' class='break-div'></div>
+        <h1 id='create-acct-form-title' class='main-content-title'>Change Membership Plan</h1>
+        <br>
+        <div id='gold' class='change-plan'>
+          <div id='left-main'><img id='mast-logo' class='plan-medal' src='assets/gold-plan.svg'></div>
+          <div id='right-main'>
+            <table class='change-plan-table' id='gold-table'>
+              <tr>
+                <td class='table-left-col'><p class='plan-title'>Gold</p></td>
+                <td class='table-right-col change-plan-table'></td>
+              </tr>
+              <tr>
+                <td class='table-left-col change-plan-table'>Benefits: </td>
+                <td class='table-right-col change-plan-table'> - Unlimited gym access</td>
+              </tr>
+              <tr>
+                <td class='table-left-col change-plan-table'></td>
+                <td class='table-right-col change-plan-table'>- Personal Training</td>
+              </tr>
+              <tr>
+                <td class='table-left-col change-plan-table'></td>
+                <td class='table-right-col change-plan-table'>- Unlimited gym access</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div id='silver' class='change-plan selected-plan'>
+          <div id='left-main'><img id='mast-logo' class='plan-medal' src='assets/silver-plan.svg'></div>
+          <div id='right-main'>
+            <table class='change-plan-table' id='silver-table'>
+              <tr>
+                <td class='table-left-col'><p class='plan-title'>Silver</p></td>
+                <td class='table-right-col change-plan-table'></td>
+              </tr>
+              <tr>
+                <td class='table-left-col change-plan-table'>Benefits: </td>
+                <td class='table-right-col change-plan-table'> - Unlimited gym access</td>
+              </tr>
+              <tr>
+                <td class='table-left-col change-plan-table'></td>
+                <td class='table-right-col change-plan-table'>- Tanning bed access</td>
+              </tr>
+              <tr>
+                <td class='table-left-col change-plan-table'></td>
+                <td class='table-right-col change-plan-table'>- 1 guest per visit</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div id='bronze' class='change-plan'>
+          <div id='left-main'><img id='mast-logo' class='plan-medal' src='assets/bronze-plan.svg'></div>
+          <div id='right-main'>
+            <table class='change-plan-table' id='bronze-table'>
+            <tr>
+              <td class='table-left-col'><p class='plan-title'>Bronze</p></td>
+              <td class='table-right-col change-plan-table'></td>
+            </tr>
+            <tr>
+              <td class='table-left-col change-plan-table'>Benefits: </td>
+              <td class='table-right-col change-plan-table'> - Unlimited gym access</td>
+            </tr>
+            <tr>
+              <td class='table-left-col change-plan-table'></td>
+              <td class='table-right-col change-plan-table'></td>
+            </tr>
+            <tr>
+              <td class='table-left-col change-plan-table'></td>
+              <td class='table-right-col change-plan-table'></td>
+            </tr>
+          </table>
+        </div>
+        </div>
+        <form id='change-plan-form' method='POST'>
+          <input class='form-input-text text-input-medium left' type="submit" name='submit' value=' Submit'>
+          <input class='form-input-text text-input-medium right' type="submit" name='cancel' value=' Cancel'>
+        </form>
+        <br>
+        <a id='cancel-memberhip-link' href='cancel-membership.php'>Cancel Membership</a>
+      </div>
+    </div>
+    <br>
+    <div id='footer'>
+        <p id='footer-p'>Ever Health - 550 East Spring St. Columbus, OH 43215 - (614)287-5353 - everhealth@everhealth.com</p>
+    </div>
+  </body>
+</html>

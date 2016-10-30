@@ -2,11 +2,12 @@
 
 class Header{
 
-  private $page;
+  private $page, $info;
 
-  function __construct($__page){
+  function __construct($_page, $_info){
 
-    $this->page = $__page;
+    $this->page = $_page;
+    $this->info = $_info;
     echo "<head>";
     echo "<meta charset='UTF-8'>";
     echo "<title>Create Account</title>";

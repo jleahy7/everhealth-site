@@ -1,11 +1,13 @@
 <?php
 class NavBar{
 
-  private $page;
+  private $page, $info;
 
-  function __construct($__page){
+  function __construct($_page, $_info){
 
-    $this->page = $__page;
+    $this->page = $_page;
+    $this->info = $_info;
+    
     echo "<div id='navbar'>";
     echo "<a href='#'><p class='nav-link'>Home</p></a>";
     echo "<a href='#'><p class='nav-link'>Locations</p></a>";
