@@ -1,9 +1,10 @@
 body{
   width: auto;
+  height: 100%;
   background-color: #0290BF;
   font-family: 'Lato';
   color: white;
-  overflow: auto;
+  /*overflow: auto;*/
   display: block;
   padding-bottom: 55px;
 }
@@ -38,6 +39,14 @@ p.float-nav{
   padding-top: 0px;
 }
 
+.main-content-detail-p{
+  font-size: 20px;
+}
+
+.same-line{
+  display: inline;
+}
+
 .form-text{
   display: inline-block;
   position: relative;
@@ -51,6 +60,10 @@ p.float-nav{
   border: 5px solid white;
   background-color: #0290BF;
   margin-top: 1em;
+}
+
+.medium-margin-bottom{
+  margin-bottom: 1em;
 }
 
 .text-input-medium{
@@ -78,10 +91,11 @@ p.float-nav{
 
 #wrapper{
   width: 660px;
-  height: 100%;
+  height: auto;
   background-color: white;
   margin-left: auto;
   margin-right: auto;
+  /*overflow: auto;*/
 }
 
 #floating-nav{
@@ -121,6 +135,7 @@ p.float-nav{
   width: auto;
   background: #0290BF;
   position: relative;
+  /*overflow: auto;*/
 }
 
 #create-acct-form-title{
@@ -194,7 +209,7 @@ a.forgot{
 }
 
 #my-acct-information-table{
-  width: 273px;
+  width: 100%;
   height: auto;
   font-size: 26px;
 
@@ -282,4 +297,65 @@ h1.my-acct-billing-links, h1.my-acct-change-pass{
 
 img.edit-icon{
   width: 35px;
+}
+
+
+/*
+
+  change-plan page related styles here
+
+*/
+
+div.change-plan{
+  display: block;
+  padding: .5em;
+  margin-bottom: 1.5em;
+  border: 8px solid #0290BF;
+  width: 100%;
+  height: auto;
+}
+
+div.selected-plan{
+  border: 8px solid #00C973;
+}
+
+div#gold{
+
+}
+
+div#silver{
+
+}
+
+div#bronze{
+
+}
+
+img.plan-medal{
+
+}
+
+p.plan-title{
+  font-size: 38px;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+table.change-plan-table{
+  width: 100%;
+  height: 100%;
+  font-size: 26px;
+}
+
+td.change-plan-table{
+  padding-top: .25em;
+  padding-bottom: .25em;
+
+}
+
+a#cancel-memberhip-link{
+  padding-top: 1em;
+  padding-bottom: 1em;
+  text-align: right;
+  float: right;
 }

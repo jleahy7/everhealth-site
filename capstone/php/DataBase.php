@@ -5,7 +5,7 @@ class DataBase{
     private $db;
 
     public function __construct(){
-      $this->db = new MysqliDb ('54.175.138.79', 'jimmy-2', 'cscccapstone', 'everhealth');
+      $this->db = new MysqliDb ('54.164.39.175', 'jake', 'cscccapstone', 'everhealth');
     }
 
     public function grab_db() {
@@ -42,6 +42,29 @@ class DataBase{
       return $userExists;
     }
 
+    public static function check_for_email($email){
+      //if email exists, return account_username
+      $db = MysqliDb::getInstance();
+      $db->where('email', $email);
+      $results = $db->get('customer');
+      if($results){
+        echo 'customer with that email exists!';
+        return $results[0];
+      } else {
+        echo 'no customer with the email ' . $email . ' exists.';
+      }
+    }
+
+    public static function get_user_pass($username){
+      $db = MysqliDb::getInstance();
+      $db->where('account_username', $username);
+      $results = $db->get('accounts');
+      if($results){
+        echo 'customer with that email exists!';
+        return $results[0]['account_password'];
+      }
+    }
+
     public static function create_acct($username, $password){
       $data = Array(
         "account_username" => $username,
@@ -58,10 +81,93 @@ class DataBase{
     }
 
     public static function add_payment_info($info){
-      echo var_dump($info);
+      // echo var_dump($info);
       $db = MysqliDb::getInstance();
       return $db->insert('payment', $info);
     }
+
+    public static function add_membership($paymentID){
+      $info = Array(
+        "payment_ID" => $paymentID,
+        "plan" => "bronze",
+        "rate" => 10
+      );
+      $db = MysqliDb::getInstance();
+      $results = $db->insert('membership', $info);
+      return $results;
+    }
+
+    public static function tie_membership_to_customer($account_username, $membershipID){
+      $db = MysqliDb::getInstance();
+      $db->where('account_username', $account_username);
+      $results = $db->get('customer');
+      if(isset($results[0])){
+        echo 'tie method results : ' . var_dump($results);
+        $updateInfo = Array('membership_ID' => $membershipID);
+        $db->where('account_username', $account_username);
+        $db->update('customer', $updateInfo, 1);
+      }
+      return $results;
+    }
+
+    public static function change_acct_pass($username, $newPassword){
+      $db = MysqliDb::getInstance();
+      $db->where('account_username', $username);
+      $results = $db->get('accounts');
+      if(isset($results[0])){
+        echo 'tie method results : ' . var_dump($results);
+        $updateInfo = Array('account_password' => $newPassword);
+        $db->where('account_username', $username);
+        $results = $db->update('accounts', $updateInfo, 1);
+      }
+      return $results;
+    }
+
+    public static function change_acct_plan($acct, $newPlan){
+      $db = MysqliDb::getInstance();
+      $db->where('account_username', $_COOKIE['account_username']);
+      $results = $db->get('customer');
+      if(isset($results[0])){
+        $membershipID = $results[0]['membership_ID'];
+        $db->where('membership_ID', $membershipID);
+        $results = $db->get('membership');
+        if(isset($results[0])){
+          echo "results : " . var_dump($results[0]);
+          $updateInfo = Array('plan' => $newPlan);
+          $db->where('membership_ID', $membershipID);
+          echo "update infp : " . var_dump($updateInfo);
+          $results = $db->update('membership', $updateInfo, 1);
+        }
+      }
+      return $results;
+    }
+
+    public static function change_billing_info($info){
+      $db = MysqliDb::getInstance();
+      // echo 'cbi info : ';
+      // echo var_dump($info);
+      // echo '<br><br>';
+      $updateInfo = Array('card_number' => $info['cardNumber'], 'card_holder' => $info['cardHolder'], 'cvv' => $info['cvv']);
+      $updateInfo['expiration_date'] = $info['expire-year'] . "-" . $info['expire-month'] . "-01";
+      // echo 'update info : ' . $updateInfo['expiration_date'];
+      // echo '<br><br>updatedInfo : ' . var_dump($updateInfo);
+      $db->where('account_username', $_COOKIE['account_username']);
+      $results = $db->get('payment');
+      if(isset($results[0])){
+        $paymentID = $results[0]['payment_ID'];
+        $db->where('payment_ID', $paymentID);
+        $results = $db->update('payment', $updateInfo, 1);
+        // echo "<br><br><br>results : " . var_dump($results[0]);
+      }
+      return $results;
+    }
+
+    public static function get_billing_info($paymentID){
+      $db = MysqliDb::getInstance();
+      $db->where('payment_ID', $paymentID);
+      return $db->get('payment');
+    }
+
 }
 
 ?>

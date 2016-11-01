@@ -19,7 +19,7 @@ class Template{
 
     require_once "vendor/autoload.php";
 
-    error_reporting(0);
+    // error_reporting(0);
 
     $this->init_db();
     $this->page = $__page;
@@ -29,6 +29,7 @@ class Template{
       $this->info->set_cookie_name("account_username");
       $this->info->set_cookie_value($_COOKIE['account_username']);
       $inf = $this->info->grab_info_from_db();
+      // echo 'got the info : ' . var_dump($inf);
     } else {
       $inf = 'nothing';
     }
@@ -72,6 +73,21 @@ class Template{
         break;
       case 'change-profile-pic':
         $this->changeProfilePic_POST();
+        break;
+      case 'forgot-username':
+        $this->forgotUsername_POST();
+        break;
+      case 'forgot-password':
+        $this->forgotPassword_POST();
+        break;
+      case 'change-plan':
+        $this->changePlan_POST();
+        break;
+      case 'update-billing-info':
+        $this->updateBillingInfo_POST();
+        break;
+      case 'update-profile':
+        $this->updateProfile_POST();
         break;
     }
 
@@ -186,8 +202,19 @@ class Template{
         "cvv" => $cvv,
         "card_holder" => $cardHolder
       );
-      if($this->db::add_payment_info($info)){
-        header('Location: my-acct.php');
+      // add the payment information
+      $addPaymentResult = $this->db::add_payment_info($info);
+      if($addPaymentResult){
+        // add a membership row
+        $results = $this->db::add_membership($addPaymentResult);
+        if($results){
+          //here results represents if the membership was added successfully and the membership_ID
+          //associate membership ID with the customer table
+          $results = $this->db::tie_membership_to_customer($_COOKIE['account_username'], $results);
+          echo 'tie results were : ' . var_dump($results);
+          header('Location: my-acct.php');
+        }
+
       }
     }
   }
@@ -216,11 +243,144 @@ class Template{
   }
 
   function changePass_POST(){
-
+    $username = null; $password = null; $newPass = null; $verifyNewPass = null;
+    if(isset($_COOKIE['account_username'])){
+      $username = $_COOKIE['account_username'];
+    }
+    if(isset($_POST['currentPassword'])){
+      $password = $_POST['currentPassword'];
+    }
+    if(isset($_POST['newPassword'])){
+      $newPass = $_POST['newPassword'];
+    }
+    if(isset($_POST['verifyPassword'])){
+      $verifyNewPass = $_POST['verifyPassword'];
+    }
+    if(is_null($username) || is_null($password) || is_null($newPass) || is_null($verifyNewPass)){
+      echo "Please check your log in credintials";
+    } else if(!Info::validate_password($newPass)){
+      header('Location: change-pass.php?passwordLengthError=true');
+    } else {
+      if(DataBase::change_acct_pass($username, $newPass)){
+        //set cookie
+        setcookie('account_username', $_POST['username'], time() + 63072000);
+        header('Location: my-acct.php');
+      } else {
+        //redirect back to sign in with error message
+        header('Location: change-pass.php?errorOccurred=true');
+      }
+    }
   }
 
   function changeProfilePic_POST(){
 
+  }
+
+  function forgotUsername_POST(){
+    $accountEmail = null;
+    if(isset($_POST['email'])){
+      $accountEmail = $_POST['email'];
+    }
+    if(is_null($accountEmail)){
+      echo "Please enter a vaild email address";
+    } else{
+      $results = DataBase::check_for_email($accountEmail);
+      if(!$results){
+        header('Location: forgot-username.php?unkownEmail=true');
+      } else {
+        if(Info::send_forgot_username($results['account_username'], $accountEmail, $results['first_name'], $results['last_name'])){
+          header('Location: sign-in.php');
+        } else {
+          header('Location: forgot-username.php?errorOccurred=true');
+        }
+      }
+    }
+  }
+
+  function forgotPassword_POST(){
+    $accountEmail = null;
+    if(isset($_POST['email'])){
+      $accountEmail = $_POST['email'];
+    }
+    if(is_null($accountEmail)){
+      echo "Please enter a vaild email address";
+    } else{
+      $results = DataBase::check_for_email($accountEmail);
+      if(!$results){
+        header('Location: forgot-password.php?unkownEmail=true');
+      } else {
+        if(Info::send_forgot_password($results['account_username'], $accountEmail, $results['first_name'], $results['last_name'])){
+          header('Location: sign-in.php');
+        } else {
+          header('Location: forgot-password.php?errorOccurred=true');
+        }
+      }
+    }
+  }
+
+  function changePlan_POST(){
+      if(DataBase::change_acct_plan($_COOKIE['account_username'], $_POST['chosen-plan'])){
+        header('Location: my-acct.php?alert=change_plan_success');
+      }
+  }
+
+  function updateBillingInfo_POST(){
+    $ccCheck = Info::validate_credit_card($_POST['cardNumber']);
+    echo 'cccheck : ' . var_dump($ccCheck);
+    if($ccCheck){
+      if(DataBase::change_billing_info($_POST)){
+        header('Location: my-acct.php?alert=change_billing_info_success');
+      } else {
+        header('Location: update-billing-info.php?databaseError=true');
+      }
+    } else {
+      header('Location: update-billing-info.php?invalidCard=true');
+    }
+
+  }
+
+  function updateProfile_POST(){
+    echo var_dump($_POST);
+    $title = null; $firstName = null; $lastName = null; $gender = null; $phone = null; $email = null; $location = null;
+    if(isset($_POST['title'])){
+      $title = $_POST['title'];
+    }
+    if(isset($_POST['firstName'])){
+      $firstName = $_POST['firstName'];
+    }
+    if(isset($_POST['lastName'])){
+      $lastName = $_POST['lastName'];
+    }
+    if(isset($_POST['gender'])){
+      $gender = $_POST['gender'];
+    }
+    if(isset($_POST['phone'])){
+      $phone = $_POST['phone'];
+    }
+    if(isset($_POST['email'])){
+      $email = $_POST['email'];
+    }
+    if(isset($_POST['location'])){
+      $location = $_POST['location'];
+    }
+    if($title == "default" || $gender == "default" || $location =="default" || is_null($title) || is_null($firstName) || is_null($lastName) || is_null($gender) || is_null($phone) || is_null($email) || is_null($location)){
+      header('Location: update-profile.php?needMoreInfo=true');
+      // echo "Title : " . $title . " first : " . $firstName . " last : " .$lastName." gender : ".$gender." phone : ".$phone." email : ".$email." location : ".$location;
+    } else {
+      $info = Array(
+        "account_username" => $_COOKIE['account_username'],
+        "title" => $title,
+        "first_name" => $firstName,
+        "last_name" => $lastName,
+        "gender" => $gender,
+        "phone" => $phone,
+        "email" => $email,
+        "location_ID" => $location
+      );
+      if($this->db::update_acct_info($info)){
+        header('Location: create-acct-step3.php');
+      }
+    }
   }
 
   function handle_POST(){

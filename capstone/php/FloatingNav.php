@@ -25,6 +25,21 @@ class FloatingNav{
       case 'my-acct':
         $this->myAcct();
         break;
+      case 'forgot-password':
+          $this->forgotPassword();
+          break;
+      case 'forgot-username':
+            $this->forgotUsername();
+            break;
+      case 'change-plan':
+        $this->changePlan();
+        break;
+      case 'update-billing-info':
+        $this->updateBillingInfo();
+        break;
+      case 'update-profile':
+        $this->updateProfile();
+        break;
       }
 
   }
@@ -44,17 +59,85 @@ class FloatingNav{
   }
 
   public function changePass(){
-
-  }
-
-  public function changeProfilePic(){
-
-  }
-
-  public function myAcct(){
+    $username = null;
+    if(isset($_COOKIE['account_username'])){
+      $username = $_COOKIE['account_username'];
+    }
     echo "<div id='floating-nav'>";
+    echo "<a href='my-acct.php'><p class='float-nav' id='create-acct-float'>" . $username . "</p></a>";
     echo "<a href='sign-out.php'><p class='float-nav' id='create-acct-float'>Sign out</p></a>";
     echo "</div>";
   }
+
+  public function changeProfilePic(){
+    $username = null;
+    if(isset($_COOKIE['account_username'])){
+      $username = $_COOKIE['account_username'];
+    }
+    echo "<div id='floating-nav'>";
+    echo "<a href='my-acct.php'><p class='float-nav' id='create-acct-float'>" . $username . "</p></a>";
+    echo "<a href='sign-out.php'><p class='float-nav' id='create-acct-float'>Sign out</p></a>";
+    echo "</div>";
+  }
+
+  public function myAcct(){
+    $username = null;
+    if(isset($_COOKIE['account_username'])){
+      $username = $_COOKIE['account_username'];
+    }
+    echo "<div id='floating-nav'>";
+    echo "<a href='my-acct.php'><p class='float-nav' id='create-acct-float'>" . $username . "</p></a>";
+    echo "<a href='sign-out.php'><p class='float-nav' id='create-acct-float'>Sign out</p></a>";
+    echo "</div>";
+  }
+
+  public function forgotPassword(){
+    echo "<div id='floating-nav'>";
+    echo "<a href='create-acct.php'><p class='float-nav' id='create-acct-float'>Create Account</p></a>";
+    echo "<a href='sign-in.php'><p class='float-nav' id='signin-float'>Sign In</p></a>";
+    echo "</div>";
+  }
+
+  public function forgotUsername(){
+    echo "<div id='floating-nav'>";
+    echo "<a href='create-acct.php'><p class='float-nav' id='create-acct-float'>Create Account</p></a>";
+    echo "<a href='sign-in.php'><p class='float-nav' id='signin-float'>Sign In</p></a>";
+    echo "</div>";
+  }
+
+  public function changePlan(){
+    $username = null;
+    if(isset($_COOKIE['account_username'])){
+      $username = $_COOKIE['account_username'];
+    }
+    echo "<div id='floating-nav'>";
+    echo "<a href='my-acct.php'><p class='float-nav' id='create-acct-float'>" . $username . "</p></a>";
+    echo "<a href='sign-out.php'><p class='float-nav' id='create-acct-float'>Sign out</p></a>";
+    echo "</div>";
+  }
+
+  public function updateBillingInfo(){
+    $username = null;
+    if(isset($_COOKIE['account_username'])){
+      $username = $_COOKIE['account_username'];
+    }
+    echo "<div id='floating-nav'>";
+    echo "<a href='my-acct.php'><p class='float-nav' id='create-acct-float'>" . $username . "</p></a>";
+    echo "<a href='sign-out.php'><p class='float-nav' id='create-acct-float'>Sign out</p></a>";
+    echo "</div>";
+  }
+
+  public function updateProfile(){
+    $username = null;
+    if(isset($_COOKIE['account_username'])){
+      $username = $_COOKIE['account_username'];
+    }
+    echo "<div id='floating-nav'>";
+    echo "<a href='my-acct.php'><p class='float-nav' id='create-acct-float'>" . $username . "</p></a>";
+    echo "<a href='sign-out.php'><p class='float-nav' id='create-acct-float'>Sign out</p></a>";
+    echo "</div>";
+  }
+
 }
+
 ?>
