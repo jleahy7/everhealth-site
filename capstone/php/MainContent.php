@@ -228,11 +228,13 @@ class MainContent{
     echo "<td class='right-col information'><a href='update-profile.php'><img class='edit-icon' src='assets/edit-white.svg'></a></td>";
     echo "</tr>";
     echo "<tr>";
-    echo "<td class='left-col'><p id='phone-field' class='information-p'>" . Info::int_to_phone($this->info['phone']) . "</p></td>";
+    echo "<td class='left-col'><p id='phone-field' class='information-p'>" . Info::int_to_phone_fancy($this->info['phone']) . "</p></td>";
     echo "<td class='right-col information'><a href='update-profile.php'><img class='edit-icon' src='assets/edit-white.svg'></a></td>";
     echo "</tr>";
     echo "</table>";
-    echo "<a href='change-pass.php'><h1 class='my-acct-change-pass' id='changePass'>Change Password</h1></a>";
+    echo "<a href='update-profile.php'><h1 class='my-acct-change-pass same-line' id='changePass'>Update Information</h1></a>";
+    echo "<h1 class='my-acct-billing-links same-line'>  |  </h1>";
+    echo "<a href='change-pass.php'><h1 class='my-acct-change-pass same-line' id='changePass'>Change Password</h1></a>";
     echo "</div>";
     echo "<div id='main-content-br' class='break-div'></div>";
     echo "<h1 id='information-h1' class='my-acct'>Membership and Billing</h1>";

@@ -377,8 +377,10 @@ class Template{
         "email" => $email,
         "location_ID" => $location
       );
-      if($this->db::update_acct_info($info)){
-        header('Location: create-acct-step3.php');
+      if(DataBase::update_acct_info($info)){
+        header('Location: my-acct.php?alert=update_profile_success');
+      } else {
+        header('Location: my-acct.php?alert=unkown_error');
       }
     }
   }

@@ -144,20 +144,25 @@ class DataBase{
 
     public static function change_billing_info($info){
       $db = MysqliDb::getInstance();
-      // echo 'cbi info : ';
-      // echo var_dump($info);
-      // echo '<br><br>';
       $updateInfo = Array('card_number' => $info['cardNumber'], 'card_holder' => $info['cardHolder'], 'cvv' => $info['cvv']);
       $updateInfo['expiration_date'] = $info['expire-year'] . "-" . $info['expire-month'] . "-01";
-      // echo 'update info : ' . $updateInfo['expiration_date'];
-      // echo '<br><br>updatedInfo : ' . var_dump($updateInfo);
       $db->where('account_username', $_COOKIE['account_username']);
       $results = $db->get('payment');
       if(isset($results[0])){
         $paymentID = $results[0]['payment_ID'];
         $db->where('payment_ID', $paymentID);
         $results = $db->update('payment', $updateInfo, 1);
-        // echo "<br><br><br>results : " . var_dump($results[0]);
+      }
+      return $results;
+    }
+
+    public static function update_acct_info($info){
+      $db = MysqliDb::getInstance();
+      $db->where('account_username', $_COOKIE['account_username']);
+      $results = $db->get('customer');
+      if(isset($results[0])){
+        $db->where('account_username', $_COOKIE['account_username']);
+        $results = $db->update('customer', $info, 1);
       }
       return $results;
     }

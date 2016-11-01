@@ -33,6 +33,10 @@ $(document).ready(function(){
         alert('Successfully changed billing information!');
         window.location.replace('my-acct.php');
         break;
+      case 'update_profile_success':
+        alert('Successfully changed profile information!');
+        window.location.replace('my-acct.php');
+        break;
     }
   }
 });
