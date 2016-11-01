@@ -1,0 +1,510 @@
+body{
+  width: auto;
+  height: 100%;
+  background-color: #0290BF;
+  font-family: 'Lato';
+  color: white;
+  /*overflow: auto;*/
+  display: block;
+  padding-bottom: 55px;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+
+p.float-nav{
+  display: inline;
+  padding-right: .25em;
+}
+
+/*
+This styles the home page
+*/
+#main-home {
+max-width: 660px;
+/*height: 400px;*/
+background: white;
+
+}
+.columns {
+box-sizing: border-box;
+}
+.columns {
+float: left;
+width: 33.3%;
+padding: 8px;
+}
+.price {
+list-style-type: none;
+border: 1px solid #eee;
+margin: 0;
+padding: 0;
+-webkit-transition: 0.3s;
+transition: 0.3s;
+}
+.price:hover {
+box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+.price .header {
+background-color: #cd7f32;
+color: #000000;
+font-size: 25px;
+}
+.price li {
+border-bottom: 1px solid #eee;
+color: #000000;
+padding: 20px;
+text-align: center;
+}
+.price .grey {
+background-color: #eee;
+font-size: 20px;
+}
+.button {
+background-color: blue;
+border: none;
+color: white;
+padding: 10px 25px;
+text-align: center;
+text-decoration: none;
+font-size: 18px;
+}
+@media only screen and (max-width: 600px) {
+.columns {
+  width: 100%;
+}
+}
+/*
+This styles the membership page
+*/
+#membership-info {
+font-family: arial, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+#membership-info th {
+font-size: 25px;
+}
+#membership-info td,#membership-info th {
+border: 1px solid #dddddd;
+text-align: left;
+padding: 8px;
+}
+#membership-info tr:nth-child(even) {
+background-color: #016A8D;
+}
+
+.large-text{
+    font-size: 45px;
+}
+
+.medium-text{
+  font-size: 30px;
+}
+
+.small-text{
+  font-size: 20px;
+}
+
+.extra-small{
+  font-size: 16px;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.center{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wide-img{
+    max-width: 100%;
+}
+
+.join-us {
+width: 200px;
+height: 60px;
+font-size: 2em;
+font-style: bold;
+margin-top: 2em;
+}
+.join-us:hover, .large-wide:hover {
+background-color: #FFFFFF;
+color: #0290BF;
+border: none;
+}
+/*
+This styles the membership page
+*/
+#slider {
+width: 720px;
+height: 400px;
+overflow: hidden;
+margin-bottom: 5%;
+}
+#slider .slides {
+display: block;
+width: 6000px;
+height: 400px;
+margin: 0;
+padding: 0;
+}
+#slider .slide {
+float: left;
+list-style-type: none;
+width: 720px;
+height: 400px;
+}
+/*
+above code styles the slider on locations
+*/
+
+.nav-link{
+  color: white;
+  display: inline;
+  font-size: 28px;
+  text-align: center;
+  padding-left: .25em;
+  padding-right: .25em;
+  line-height: 57px;
+}
+
+.main-content-title{
+  text-align: center;
+  padding-top: 0px;
+}
+
+.main-content-detail-p{
+  font-size: 20px;
+}
+
+.same-line{
+  display: inline;
+}
+
+.form-text{
+  display: inline-block;
+  position: relative;
+}
+
+.form-input-text{
+  height: 53px;
+  font-size: 24px;
+  color: white;
+  border-radius: 0px;
+  border: 5px solid white;
+  background-color: #0290BF;
+  margin-top: 1em;
+}
+
+.medium-margin-bottom{
+  margin-bottom: 1em;
+}
+
+.text-input-medium{
+  width: 263px;
+}
+
+.text-input-large{
+  width: 650px;
+}
+
+.right{
+  float: right;
+}
+
+.break-div{
+  display: inline-block;
+  background: white;
+  height: 5px;
+  width: 100%;
+}
+
+.file{
+  width: 97%;
+}
+
+#wrapper{
+  width: 660px;
+  height: auto;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  /*overflow: auto;*/
+}
+
+#floating-nav{
+  width: auto;
+  height: auto;
+  text-align: right;
+  background-color: #0290BF;
+}
+
+#masthead{
+  height: 165px;
+  background-color: #0290BF;
+  text-align: right;
+}
+
+#mast-logo{
+  height: inherit;
+  display: inline;
+  float: left;
+  fill: #FFFFFF;
+}
+
+#mast-p{
+  display: inline;
+  font-size: 64px;
+  line-height: 165px;
+}
+
+#navbar{
+  height: 57px;
+  background-color: #0290BF;
+  text-align: center;
+}
+
+#main-content{
+  height: auto;
+  width: auto;
+  background: #0290BF;
+  position: relative;
+  /*overflow: auto;*/
+}
+
+#create-acct-form-title{
+
+}
+
+#sign-in-form-title{
+  font-size: 68px;
+}
+
+#footer{
+  background-color: #0290BF;
+  bottom: 0px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  align-content: center;
+  width: 75%;
+  height: 45px;
+  left: 50%;
+  margin-left: -37.5%;
+}
+
+#right-main{
+   position: absolute;
+   display:inline-block;
+   width: auto;
+   height: auto;
+   margin-left: 1em;
+}
+
+#left-main{
+   position: relative;
+   display: inline-block;
+   width: auto;
+   height: 232px;
+}
+
+#profilePicInput{
+  cursor: pointer;
+}
+
+#browse{
+  display: inline-block;
+}
+
+/*
+  sign-in page related styles
+*/
+
+#signin-error-p{
+  text-align: center;
+  color: #FFC1BE;
+}
+
+a.forgot{
+  text-align: right;
+  float: right;
+  display: block;
+}
+
+/*
+  my-acct page related styles
+*/
+
+#my-acct-billing-table{
+  width: auto;
+  height: auto;
+  font-size: 26px;
+}
+
+#my-acct-information-table{
+  width: 100%;
+  height: auto;
+  font-size: 26px;
+
+}
+
+/*
+  create-acct-step2
+*/
+
+.large-wide{
+  width: 100%;
+  height: 65px;
+  display: block;
+  font-size: 24px;
+  color: white;
+  border-radius: 0px;
+  border: 5px solid white;
+  background-color: #0290BF;
+  margin-top: 1em;
+}
+
+#location-select{
+  display: block;
+  margin-top: 10px
+}
+
+/*
+  create-acct-step3
+*/
+
+#expire-month{
+  width: 66%;
+  display: inline;
+}
+
+#expire-year{
+  display: inline;
+  float: right;
+  width: 33%;
+}
+
+.credit-info{
+  height: 65px;
+  display: block;
+  font-size: 24px;
+  color: white;
+  border-radius: 0px;
+  border: 5px solid white;
+  background-color: #0290BF;
+  margin-top: 1em;
+}
+
+p.information-p{
+  margin-top: .25em;
+  margin-bottom: .25em;
+}
+
+p.billing-table{
+  margin-top: .25em;
+  margin-bottom: .25em;
+}
+
+h1.my-acct{
+  color: #C3ECFA;
+}
+
+td.left-col{
+  width: 90%;
+}
+
+td.right-col{
+  width: 20%;
+}
+
+td.information{
+  width: 35px;
+  height: auto;
+}
+
+
+h1.my-acct-billing-links, h1.my-acct-change-pass{
+  font-size: 24px;
+  text-align: right;
+}
+
+img.edit-icon{
+  width: 35px;
+}
+
+
+/*
+
+  change-plan page related styles here
+
+*/
+
+div.change-plan{
+  display: block;
+  padding: .5em;
+  margin-bottom: 1.5em;
+  border: 8px solid #0290BF;
+  width: 100%;
+  height: auto;
+}
+
+div.selected-plan{
+  border: 8px solid #00C973;
+}
+
+div#gold{
+
+}
+
+div#silver{
+
+}
+
+div#bronze{
+
+}
+
+img.plan-medal{
+
+}
+
+p.plan-title{
+  font-size: 38px;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+table.change-plan-table{
+  width: 100%;
+  height: 100%;
+  font-size: 26px;
+}
+
+td.change-plan-table{
+  padding-top: .25em;
+  padding-bottom: .25em;
+
+}
+
+a#cancel-memberhip-link{
+  padding-top: 1em;
+  padding-bottom: 1em;
+  text-align: right;
+  float: right;
+}
