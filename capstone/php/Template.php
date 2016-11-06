@@ -10,6 +10,7 @@ include 'php/Footer.php';
 
 class Template{
 
+  // need to refine
 
 
   public $header, $mast, $footer, $floatingNav, $navBar, $mainContent;
@@ -19,7 +20,7 @@ class Template{
 
     require_once "vendor/autoload.php";
 
-    // error_reporting(0);
+    error_reporting(0);
 
     $this->init_db();
     $this->page = $__page;

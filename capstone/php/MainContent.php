@@ -210,7 +210,7 @@ class MainContent{
   }
 
   function myAcct(){
-    $plan = (is_null($this->info['plan']))? "bronze" : $this->info['plan'];
+    $plan = (is_null($this->info['plan'])) ? "bronze" : $this->info['plan'];
 
     echo "<div id='main-content-br' class='break-div'></div>";
     echo "<h1 id='my-acct-title' class='main-content-title my-acct'>My Account</h1>";

@@ -24,6 +24,155 @@ p.float-nav{
   padding-right: .25em;
 }
 
+/*
+This styles the home page
+*/
+#main-home {
+max-width: 660px;
+/*height: 400px;*/
+background: white;
+
+}
+.columns {
+box-sizing: border-box;
+}
+.columns {
+float: left;
+width: 33.3%;
+padding: 8px;
+}
+.price {
+list-style-type: none;
+border: 1px solid #eee;
+margin: 0;
+padding: 0;
+-webkit-transition: 0.3s;
+transition: 0.3s;
+}
+.price:hover {
+box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+.price .header {
+background-color: #cd7f32;
+color: #000000;
+font-size: 25px;
+}
+.price li {
+border-bottom: 1px solid #eee;
+color: #000000;
+padding: 20px;
+text-align: center;
+}
+.price .grey {
+background-color: #eee;
+font-size: 20px;
+}
+.button {
+background-color: blue;
+border: none;
+color: white;
+padding: 10px 25px;
+text-align: center;
+text-decoration: none;
+font-size: 18px;
+}
+@media only screen and (max-width: 600px) {
+.columns {
+  width: 100%;
+}
+}
+/*
+This styles the membership page
+*/
+#membership-info {
+font-family: arial, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+#membership-info th {
+font-size: 25px;
+}
+#membership-info td,#membership-info th {
+border: 1px solid #dddddd;
+text-align: left;
+padding: 8px;
+}
+#membership-info tr:nth-child(even) {
+background-color: #016A8D;
+}
+
+.large-text{
+    font-size: 45px;
+}
+
+.medium-text{
+  font-size: 30px;
+}
+
+.small-text{
+  font-size: 20px;
+}
+
+.extra-small{
+  font-size: 16px;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.center{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wide-img{
+    max-width: 100%;
+}
+
+.join-us {
+width: 200px;
+height: 60px;
+font-size: 2em;
+font-style: bold;
+margin-top: 2em;
+}
+.join-us:hover, .large-wide:hover {
+background-color: #FFFFFF;
+color: #0290BF;
+border: none;
+}
+/*
+This styles the membership page
+*/
+#slider {
+width: 720px;
+height: 400px;
+overflow: hidden;
+margin-bottom: 5%;
+}
+#slider .slides {
+display: block;
+width: 6000px;
+height: 400px;
+margin: 0;
+padding: 0;
+}
+#slider .slide {
+float: left;
+list-style-type: none;
+width: 720px;
+height: 400px;
+}
+/*
+above code styles the slider on locations
+*/
+
 .nav-link{
   color: white;
   display: inline;
@@ -101,8 +250,11 @@ p.float-nav{
 #floating-nav{
   width: auto;
   height: auto;
+  margin-left: 60%;
   text-align: right;
   background-color: #0290BF;
+  position: fixed;
+  z-index: 999;
 }
 
 #masthead{
