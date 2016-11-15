@@ -1,0 +1,2 @@
+$acctPayQuery = "SELECT accounts_payable.account_payable_ID, accounts_payable.invoice_ID, accounts_payable.name, accounts_payable.description, accounts_payable.credit, accounts_payable.debit FROM accounts_payable;";
+$invoiceQuery = "SELECT invoices.invoice_ID, invoices.invoice_date, invoices.bill_to, invoices.ship_to, detail.description, detail.total FROM invoices INNER JOIN detail on invoices.detail_ID = detail.detail_ID";
